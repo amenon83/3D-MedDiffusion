@@ -1,0 +1,5 @@
+# Activate env (on SSD)
+conda activate /media/liyong/f001be89-9498-4619-9827-7607b8ac9501/home/liyong/Arnav/conda_envs/3DMedDiffusion
+
+# Install deps: use script so pip temp/cache use SSD (main drive is full)
+bash scripts/pip_install_ssd.sh

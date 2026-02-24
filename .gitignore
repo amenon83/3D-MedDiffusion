@@ -1,0 +1,3 @@
+# Large data / NIfTI files (use DVC or store elsewhere)
+data/LungSBRT/*.nii.gz
+data/LungSBRT_dose/*.nii.gz

@@ -19,7 +19,12 @@ def is_image_dicom(path: str) -> bool:
     """Skip RT plan, structure set, etc.; keep CT image slices."""
     try:
         dcm = pydicom.dcmread(path, stop_before_pixels=True)
-        return hasattr(dcm, "pixel_array") or (hasattr(dcm, "SOPClassUID") and "Image" in str(dcm.get("SOPClassUID", "")))
+        if hasattr(dcm, "Rows") and hasattr(dcm, "Columns"):
+            return True
+        modality = getattr(dcm, "Modality", "")
+        if modality in ("CT", "MR", "PT", "NM"):
+            return True
+        return False
     except Exception:
         return False
 
